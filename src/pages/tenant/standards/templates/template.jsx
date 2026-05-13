@@ -207,7 +207,11 @@ const Page = () => {
         standard.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
         standard.helpText.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (standard.tag &&
-          standard.tag.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))),
+          standard.tag.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))) ||
+        (standard.appliesToTest &&
+          standard.appliesToTest.some((testId) =>
+            testId.toLowerCase().includes(searchQuery.toLowerCase())
+          )),
     );
 
   const handleToggleStandard = (standardName) => {
@@ -398,7 +402,7 @@ const Page = () => {
           </Stack>
         </Stack>
 
-        <Box sx={{ flexGrow: 1, height: "calc(100vh - 270px)", overflow: "hidden" }}>
+        <Box sx={{ flexGrow: 1, height: "calc(100vh - 240px)", overflow: "hidden" }}>
           <Grid container spacing={3} sx={{ height: "100%" }}>
             {/* Left Column for Accordions */}
             <Grid size={{ xs: 12, lg: 4 }} sx={{ height: "100%", overflow: "auto", pr: 1 }}>
